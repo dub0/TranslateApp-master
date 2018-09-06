@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2015 GuDong <gudong.name@gmail.com>
+  ~
+  ~  This file is part of GdTranslate
+  ~
+  ~  GdTranslate is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation, either version 3 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  GdTranslate is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with GdTranslate.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_word_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:paddingTop="@dimen/md_content_padding_top"
+    android:paddingBottom="@dimen/md_content_padding_top"
+    android:paddingLeft="16dp"
+    android:background="?attr/selectableItemBackground">
+
+
+    <ImageView
+        android:id="@+id/iv_over_flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp"
+        android:clickable="true"
+        android:padding="8dp"
+        android:background="@drawable/selector_over_flow"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_words"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/iv_over_flow"
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:id="@+id/tv_pop_src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:ellipsize="end"
+            android:maxLength="26"
+            android:maxLines="1"
+            android:layout_alignParentLeft="true"
+            tools:text="words"
+            android:textAppearance="?attr/textAppearanceListItem"/>
+
+        <TextView
+            android:id="@+id/tv_pop_phonetic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_pop_src"
+            android:layout_alignTop="@+id/tv_pop_src"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/tv_pop_src"
+            tools:text="[wɑ:t]" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_sound"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignBottom="@+id/tv_pop_src"
+            android:layout_alignTop="@+id/tv_pop_src"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/tv_pop_phonetic"
+            app:srcCompat="@drawable/ic_volume_up_black_24dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_pop_dst"
+            android:layout_below="@+id/tv_pop_src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:orientation="vertical"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
