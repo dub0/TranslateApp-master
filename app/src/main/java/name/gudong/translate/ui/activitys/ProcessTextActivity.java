@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.umeng.analytics.MobclickAgent;
 
 import javax.inject.Inject;
 

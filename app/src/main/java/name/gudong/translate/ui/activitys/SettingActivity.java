@@ -2,18 +2,14 @@ package name.gudong.translate.ui.activitys;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SeekBar;
 
 import com.github.anzewei.parallaxbacklayout.ParallaxBack;
-import com.umeng.analytics.MobclickAgent;
 
 import jonathanfinerty.once.Once;
 import name.gudong.translate.BuildConfig;
@@ -22,7 +18,6 @@ import name.gudong.translate.listener.ListenClipboardService;
 import name.gudong.translate.manager.ReciteModulePreference;
 import name.gudong.translate.mvp.model.type.EDurationTipTime;
 import name.gudong.translate.mvp.model.type.EIntervalTipTime;
-import name.gudong.translate.widget.ThumbSelectPreference;
 
 @ParallaxBack
 public class SettingActivity extends AppCompatActivity {
@@ -129,23 +124,18 @@ public class SettingActivity extends AppCompatActivity {
                                     switch (which){
                                         case 0:
                                             selectDurationTime(EDurationTipTime.ONE_SECOND.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_duration_time_2");
                                             break;
                                         case 1:
                                             selectDurationTime(EDurationTipTime.THREE_SECOND.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_duration_time_3");
                                             break;
                                         case 2:
                                             selectDurationTime(EDurationTipTime.FOUR_SECOND.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_duration_time_4");
                                             break;
                                         case 3:
                                             selectDurationTime(EDurationTipTime.SIX_SECOND.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_duration_time_6");
                                             break;
                                         case 4:
                                             selectDurationTime(EDurationTipTime.TEN_SECOND.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_duration_time_10");
                                             break;
                                     }
                                     preference.setSummary(getArrayValue(resArray,which));
@@ -164,27 +154,21 @@ public class SettingActivity extends AppCompatActivity {
                                     switch (which){
                                         case 0:
                                             selectIntervalTipTime(EIntervalTipTime.THIRTY_SECOND.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_interval_time_30_scond");
                                             break;
                                         case 1:
                                             selectIntervalTipTime(EIntervalTipTime.ONE_MINUTE.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_interval_time_1");
                                             break;
                                         case 2:
                                             selectIntervalTipTime(EIntervalTipTime.THREE_MINUTE.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_interval_time_3");
                                             break;
                                         case 3:
                                             selectIntervalTipTime(EIntervalTipTime.FIVE_MINUTE.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_interval_time_5");
                                             break;
                                         case 4:
                                             selectIntervalTipTime(EIntervalTipTime.TEN_MINUTE.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_interval_time_10");
                                             break;
                                         case 5:
                                             selectIntervalTipTime(EIntervalTipTime.THIRTY_MINUTE.name());
-                                            MobclickAgent.onEvent(getActivity(),"menu_interval_time_30");
                                             break;
 
                                     }
@@ -230,7 +214,6 @@ public class SettingActivity extends AppCompatActivity {
             //利用 Service 生命周期巧妙控制开关
             ListenClipboardService.start(getActivity());
         }
-
     }
 
 }

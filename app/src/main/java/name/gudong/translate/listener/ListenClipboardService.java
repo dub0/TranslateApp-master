@@ -24,22 +24,18 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.app.Service;
-import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Binder;
-import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.orhanobut.logger.Logger;
-import com.umeng.analytics.MobclickAgent;
 
 import javax.inject.Inject;
 
@@ -61,7 +57,6 @@ public final class ListenClipboardService extends Service implements ITipFloatVi
     ClipboardPresenter mPresenter;
     @Inject
     TipViewController mTipViewController;
-
     BroadcastReceiver mScreenStatusReceive;
 
     @Override
@@ -104,11 +99,9 @@ public final class ListenClipboardService extends Service implements ITipFloatVi
                 //Service在onStart时，上一次的广播Receiver还没来得及注册，这一次就unRegister
                 //造成广播未注册就解注册，crash
                 unregisterReceiver(mScreenStatusReceive);
-            } catch (IllegalArgumentException e) {
-            }
+            } catch (IllegalArgumentException e) {}
         }
     }
-
 
     private void setUpInject() {
         DaggerActivityComponent.builder()
@@ -168,18 +161,14 @@ public final class ListenClipboardService extends Service implements ITipFloatVi
     public static void startForWeakLock(Context context, Intent intent) {
         Intent serviceIntent = new Intent(context, ListenClipboardService.class);
         context.startService(serviceIntent);
-
         intent.putExtra(ListenClipboardService.KEY_FOR_WEAK_LOCK, true);
         Intent myIntent = new Intent(context, ListenClipboardService.class);
-
         // using wake lock to start service
         WakefulBroadcastReceiver.startWakefulService(context, myIntent);
     }
 
     @Override
-    public void onComplete() {
-
-    }
+    public void onComplete() {}
 
     @Override
     public void errorPoint(String error) {
@@ -206,7 +195,6 @@ public final class ListenClipboardService extends Service implements ITipFloatVi
 
     @Override
     public void onClickFavorite(View view, Result result) {
-        MobclickAgent.onEvent(this, "favorite_service");
         AnswerUtil.actionFavorite("listenClipboard");
         mPresenter.startFavoriteAnim(view, new BasePresenter.AnimationEndListener() {
             @Override
@@ -225,7 +213,6 @@ public final class ListenClipboardService extends Service implements ITipFloatVi
 
     @Override
     public void onClickDone(View view, Result result) {
-        MobclickAgent.onEvent(this, "click_done");
         mPresenter.markDone(result);
         startMarkDoneAnim(view);
 
@@ -277,9 +264,7 @@ public final class ListenClipboardService extends Service implements ITipFloatVi
     }
 
     @Override
-    public void onRemove() {
-
-    }
+    public void onRemove() {}
 
     public class ProcessBinder extends Binder {
         /**

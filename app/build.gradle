@@ -7,12 +7,12 @@ buildscript {
         classpath 'io.fabric.tools:gradle:1.22.2'
     }
 }
-apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
-
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
 
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
@@ -187,15 +187,15 @@ dependencies {
     // Other
     compile "com.orhanobut:logger:${libs.logger}"
     retrolambdaConfig "net.orfjackal.retrolambda:retrolambda:${libs.retrolambda}"
-    compile "com.jonathanfinerty.once:once:${libs.once}"
+    compile "com.jonathanfinerty.once:once:${libs.once}"//记录启动方式一次或多次
 
     compile "com.android.support:preference-v7:${libs.supportVersion}"
-    compile 'com.umeng.analytics:analytics:latest.integration'
+    //compile 'com.umeng.analytics:analytics:latest.integration'//友盟统计点了什么地方
     compile "com.android.support:support-v4:${libs.supportVersion}"
 
     compile "moe.feng:AlipayZeroSdk:${libs.alipay_zero_sdk}"
 
-    compile "com.jenzz:materialpreference:${libs.materialpreference}"
+    compile "com.jenzz:materialpreference:${libs.materialpreference}"//保存sharepreference  switch开关
     compile "com.github.bumptech.glide:glide:${libs.glide}"
 
     compile("me.drakeet.library:crashwoodpecker:${libs.crashwoodpecker}") {
@@ -229,9 +229,9 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
         transitive = true;
     }
-    compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
+    /*compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
         transitive = true;
-    }
+    }*/
 
     compile 'com.github.anzewei:parallaxbacklayout:1.1.9'
     compile 'com.airbnb.android:lottie:2.1.0'

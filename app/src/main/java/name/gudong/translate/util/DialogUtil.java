@@ -3,15 +3,11 @@ package name.gudong.translate.util;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.umeng.analytics.MobclickAgent;
-
-import name.gudong.translate.R;
 import moe.feng.alipay.zerosdk.AlipayZeroSdk;
-import name.gudong.translate.ui.activitys.MainActivity;
+import name.gudong.translate.R;
 import name.gudong.translate.widget.WebDialog;
 
 /**
@@ -61,14 +57,22 @@ public class DialogUtil {
     public static void showSupport(AppCompatActivity activity) {
         showCustomDialogWithTwoAction(activity, activity.getSupportFragmentManager(),
                 "支持开发者", "donate_ch.html", "donate",
-                "关闭", ((dialog1, which1) -> MobclickAgent.onEvent(activity, "menu_support_close")),
-                "打开支付宝转账页面", (dialog, which) -> {
-                    MobclickAgent.onEvent(activity, "menu_support_click");
+                "关闭", /*((dialog1, which1) -> MobclickAgent.onEvent(activity, "menu_support_close")
+
+                ),*/
+
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                },"打开支付宝转账页面", (dialog, which) -> {
+                    //MobclickAgent.onEvent(activity, "menu_support_click");
                     AnswerUtil.actionSupportPay();
                     if (AlipayZeroSdk.hasInstalledAlipayClient(activity)) {
                         AlipayZeroSdk.startAlipayClient(activity, "aex07094cljuqa36ku7ml36");
                     } else {
-                        MobclickAgent.onEvent(activity, "menu_support_click_but_have_not_alipay");
+                        //MobclickAgent.onEvent(activity, "menu_support_click_but_have_not_alipay");
                         Toast.makeText(activity, activity.getString(R.string.support_fail_because_not_install), Toast.LENGTH_LONG).show();
                     }
                 });

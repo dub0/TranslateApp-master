@@ -24,20 +24,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- begin umeng -->
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="56a45cd9e0f55add0d002d49"/>
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}"/>
-        <!-- bug hd -->
-        <meta-data
-            android:name="BUG_HD_SDK_GENERAL_KEY"
-            android:value="60641333d73c37d9db66465ab8f78cc9"/>
-
-        <!-- android:theme="@android:style/Theme.NoDisplay" -->
-        <!-- android:theme="@android:style/Theme.Dialog" -->
         <activity
             android:name=".ui.activitys.ProcessTextActivity"
             android:label="@string/app_name"
@@ -87,6 +73,23 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
 
+
+        <!-- begin umeng -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="56a45cd9e0f55add0d002d49"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}"/>
+        <!-- bug hd -->
+        <meta-data
+            android:name="BUG_HD_SDK_GENERAL_KEY"
+            android:value="60641333d73c37d9db66465ab8f78cc9"/>
+
+        <!-- android:theme="@android:style/Theme.NoDisplay" -->
+        <!-- android:theme="@android:style/Theme.Dialog" -->
+
+        <!--alipay-->
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="8f783db5c619f64c2e1b0f7594b3e4b58c59efd5"/>

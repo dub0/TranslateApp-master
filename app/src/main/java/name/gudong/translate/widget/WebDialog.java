@@ -36,9 +36,6 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-
-import com.umeng.analytics.MobclickAgent;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -177,7 +174,6 @@ public class WebDialog extends DialogFragment {
         /** Show a dialog about gank site **/
         @JavascriptInterface
         public void clickThanksWords(){
-            MobclickAgent.onEvent(getActivity(), "link_click_donate");
             DialogUtil.showAboutDonate((AppCompatActivity) getActivity());
         }
     }
